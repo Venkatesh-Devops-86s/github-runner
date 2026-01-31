@@ -1,14 +1,15 @@
-name: create runner # workflow name
-on: workflow_dispatch
-jobs: 
-  create-runner:
-    runs-on: ubuntu-latest
+name: create self host  runner # name of the GitHub Actions workflow.
+on: workflow_dispatch ## workflow does not run automatically, It can be triggered manually from the GitHub UI
+jobs: # job name
+  create-runner: # job id
+    runs-on: ubuntu-latest  ## The job will run on the latest version of Ubuntu available in GitHub-hosted runners.
     steps:
-      - name: checkout code
-        uses: actions/checkout@v6
+      - name: checkout code ## checkout code step
+        uses: actions/checkout@v6 ## checkout action for code it  will automatically checkout the code from the repo
 
       - name: list files
         run: ls -l
+        
       # installs latest terraform in the runner
       - name: setup terraform
         uses: hashicorp/setup-terraform@v3
